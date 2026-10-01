@@ -18,6 +18,7 @@ export default function Skills() {
                     { id: 'web', label: 'Front-End / Web' },
                     { id: 'backend', label: 'Linguagens & Cloud' },
                     { id: 'renewable', label: 'Energias & Fotovoltaica' },
+                    { id: 'cybersecurity', label: 'CyberSecurity' },
                     { id: 'soft', label: 'Soft Skills & Liderança' }
                 ].map((tab) => (
                     <button

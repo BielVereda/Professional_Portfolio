@@ -42,7 +42,7 @@ export default function Footer() {
                     GitHub
                 </a>
                 <a
-                    href="https://www.instagram.com/"
+                    href="https://www.instagram.com/biel.vereda/"
                     target="_blank"
                     rel="noreferrer"
                     className="group flex items-center gap-2 bg-slate-900/80 backdrop-blur-sm hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-600 border border-slate-700 hover:border-cyan-500/50 text-slate-200 hover:text-slate-950 font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 text-sm sm:text-base"
@@ -51,7 +51,7 @@ export default function Footer() {
                     Instagram
                 </a>
                 <a
-                    href="https://wa.me/5511999999999"
+                    href="https://wa.me/5511913359082"
                     target="_blank"
                     rel="noreferrer"
                     className="group flex items-center gap-2 bg-slate-900/80 backdrop-blur-sm hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-600 border border-slate-700 hover:border-cyan-500/50 text-slate-200 hover:text-slate-950 font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 text-sm sm:text-base"

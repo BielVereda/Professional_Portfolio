@@ -8,6 +8,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Certificates from './components/Certificates';
 import Volunteering from './components/Volunteering';
+import Resumes from './components/Resumes';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -38,7 +39,7 @@ export default function App() {
     sections.forEach(section => observer.observe(section));
 
     const handleScroll = () => {
-      const sectionIds = ['home', 'story', 'education', 'skills', 'projects', 'certificates', 'volunteering', 'contact'];
+      const sectionIds = ['home', 'story', 'education', 'skills', 'projects', 'certificates', 'volunteering', 'resumes', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const sectionId of sectionIds) {
@@ -80,6 +81,7 @@ export default function App() {
         <Projects />
         <Certificates />
         <Volunteering />
+        <Resumes />
         <Footer />
       </main>
     </div>

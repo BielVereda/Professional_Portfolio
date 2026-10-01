@@ -1,4 +1,5 @@
 import React from 'react';
+import githubIcon from '../assets/images/icons/github.png';
 import { projectsData } from '../data/portfolioData';
 
 export default function Projects() {
@@ -35,13 +36,13 @@ export default function Projects() {
                         </div>
 
                         <div className="flex gap-4 mt-6 pt-4 border-t border-slate-800/80 text-xs font-semibold">
-                            <a 
-                                href={proj.github} 
-                                target="_blank" 
-                                rel="noreferrer" 
+                            <a
+                                href={proj.github}
+                                target="_blank"
+                                rel="noreferrer"
                                 className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors duration-300 group-hover:scale-105 transform"
                             >
-                                <span className="text-lg">🔗</span> Ver Código
+                                <img src={githubIcon} alt="GitHub" className="w-4 h-4 brightness-0 invert" /> Abrir repositório
                             </a>
                         </div>
                     </div>

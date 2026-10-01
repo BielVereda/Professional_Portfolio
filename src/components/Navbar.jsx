@@ -7,6 +7,7 @@ import starIcon from '../assets/images/icons/star.png';
 import folderIcon from '../assets/images/icons/folder.png';
 import awardIcon from '../assets/images/icons/award.png';
 import heartIcon from '../assets/images/icons/heart.png';
+import medalIcon from '../assets/images/icons/medal.png';
 import mailIcon from '../assets/images/icons/mail.png';
 
 const iconMap = {
@@ -17,6 +18,7 @@ const iconMap = {
     projects: folderIcon,
     certificates: awardIcon,
     volunteering: heartIcon,
+    resumes: medalIcon,
     contact: mailIcon
 };
 
@@ -24,7 +26,7 @@ export default function Navbar({ activeSection, mobileOpen, setMobileOpen }) {
     return (
         <>
             {/* Navbar Lateral Direita Desktop */}
-            <nav className="fixed right-0 top-0 h-full w-16 lg:w-20 bg-slate-900/90 backdrop-blur-xl border-l border-slate-800 z-50 hidden lg:flex flex-col items-center justify-center py-10 gap-4 animate-fade-in">
+            <nav className="fixed right-0 top-0 h-full w-16 lg:w-20 bg-slate-900/90 backdrop-blur-xl border-l border-slate-800 z-50 hidden lg:flex flex-col items-center justify-center pt-20 pb-16 gap-2 animate-fade-in">
                 {navItems.map((item) => {
                     const isActive = activeSection === item.id;
                     const iconSrc = iconMap[item.id];

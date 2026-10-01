@@ -6,6 +6,7 @@ export const navItems = [
     { id: 'projects', label: 'Projetos' },
     { id: 'certificates', label: 'Certificados' },
     { id: 'volunteering', label: 'Atuação' },
+    { id: 'resumes', label: 'Currículos' },
     { id: 'contact', label: 'Contato' }
 ];
 
@@ -14,19 +15,22 @@ export const skillCategories = {
         { name: "HTML5 & CSS3 / SCSS", level: "Avançado", desc: "Semântica, responsividade mobile-first e estilização moderna" },
         { name: "JavaScript (ES6+)", level: "Intermediário", desc: "DOM, requisições assíncronas e lógica de programação" },
         { name: "React.js", level: "Em Evolução", desc: "Criação de SPAs, componentes modulares e estados" },
-        { name: "Tailwind CSS & Bootstrap", level: "Intermediário", desc: "Estilização ágil e interfaces focadas em UI/UX" }
+        { name: "Tailwind CSS & Bootstrap", level: "Intermediário", desc: "Estilização ágil e interfaces focadas em UI/UX" },
+        { name: "Angular", level: "Em Evolução", desc: "Desenvolvimento de aplicações web modernas" }
     ],
     backend: [
         { name: "Python", level: "Básico / Intermediário", desc: "Automação, lógica e fundamentos de Data Science" },
         { name: "Java", level: "Básico", desc: "Programação Orientada a Objetos e estruturas de dados" },
-        { name: "SQL & Banco de Dados", level: "Básico", desc: "Consultas, modelagem e manipulação de dados" },
+        { name: "MySQL & Banco de Dados", level: "Básico", desc: "Consultas, modelagem e manipulação de dados" },
         { name: "Git & GitHub", level: "Intermediário", desc: "Versionamento de código e trabalho em equipe" }
     ],
     renewable: [
         { name: "Sistemas Fotovoltaicos", level: "Formação Completa", desc: "Dimensionamento, montagem e manutenção fotovoltaica" },
-        { name: "Energias Renováveis (WorldSkills #62)", level: "Competidor SP", desc: "Exames práticos avançados sob padrões internacionais" },
-        { name: "AWS & Microsoft Azure (AZ-900)", level: "Certificado SENAI", desc: "Serviços essenciais e conceitos de computação em nuvem" },
-        { name: "Cyber Ops Associate", level: "Certificado SENAI", desc: "Fundamentos de redes e segurança da informação" }
+        { name: "Energias Renováveis (WorldSkills #62)", level: "Competidor SP", desc: "Exames práticos avançados sob padrões internacionais" }
+    ],
+    cybersecurity: [
+        { name: "AWS & Microsoft Azure (AZ-900)", level: "Certificado SENAI", desc: "Serviços essenciais e conceitos de computação em nuvem com foco em segurança" },
+        { name: "Cyber Ops Associate", level: "Certificado SENAI", desc: "Fundamentos de redes e segurança da informação com foco em cibersegurança" }
     ],
     soft: [
         { name: "Didática & Ensino", level: "Atuação Prática", desc: "Experiência em lecionar para turmas de 8 a 9 anos" },
@@ -71,4 +75,4 @@ export const certificatesData = [
     { name: "Competência Transversal em Lógica de Programação", issuer: "SENAI São Paulo", category: "Fundamentos" },
     { name: "Formação HTML5, CSS3 Responsivo & JavaScript", issuer: "Alura", category: "Web" },
     { name: "Vocações / Mesa de Profissões", issuer: "Porto / Vocação", category: "Soft Skills" }
-];
+]

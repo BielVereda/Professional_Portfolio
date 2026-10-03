@@ -23,6 +23,7 @@ export default function Skills() {
                 ].map((tab) => (
                     <button
                         key={tab.id}
+                        data-skill-category={tab.id}
                         onClick={() => setSelectedTab(tab.id)}
                         className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 ${selectedTab === tab.id
                                 ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-lg shadow-cyan-500/30 scale-105'
@@ -38,6 +39,7 @@ export default function Skills() {
                 {skillCategories[selectedTab].map((skill, idx) => (
                     <div 
                         key={idx} 
+                        data-skill-name={skill.name}
                         className="group bg-slate-900/60 backdrop-blur-sm border border-slate-800 p-6 rounded-xl flex flex-col justify-between hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300 hover:scale-105 hover:-translate-y-1"
                     >
                         <div>

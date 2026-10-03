@@ -18,11 +18,11 @@ export default function Volunteering() {
                 <ul className="space-y-3 text-sm text-slate-300 list-none">
                     <li className="flex items-start gap-3 group hover:text-slate-200 transition-colors duration-300">
                         <span className="text-cyan-400 mt-1 group-hover:scale-125 transition-transform duration-300">•</span>
-                        <span>Planejamento de aulas, métodos didáticos e ministração de conteúdos para crianças de 8 e 9 anos de idade.</span>
+                        <span>Aulas de violão e guitarra para crianças na igreja, às segundas-feiras, com planejamento didático e acompanhamento do aprendizado.</span>
                     </li>
                     <li className="flex items-start gap-3 group hover:text-slate-200 transition-colors duration-300">
                         <span className="text-cyan-400 mt-1 group-hover:scale-125 transition-transform duration-300">•</span>
-                        <span>Atuação como músico (Violão, Guitarra e Vocal), promovendo trabalho em equipe e apresentações públicas.</span>
+                        <span>Participação na banda da igreja durante os cultos, tocando violão, guitarra e baixo, além de cantar.</span>
                     </li>
                 </ul>
             </div>

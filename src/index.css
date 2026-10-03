@@ -217,6 +217,29 @@ section.visible {
   background: #334155;
 }
 
+/* Barra de rolagem discreta e horizontal do carrossel de projetos. */
+.projects-carousel-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #334155 transparent;
+}
+
+.projects-carousel-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+
+.projects-carousel-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.projects-carousel-scrollbar::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+
+.projects-carousel-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
 /* Selection styling */
 ::selection {
   background: rgba(34, 211, 238, 0.3);

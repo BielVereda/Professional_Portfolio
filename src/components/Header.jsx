@@ -73,7 +73,9 @@ export default function Header({ setMobileOpen }) {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [isSearchPending, setIsSearchPending] = useState(false);
     const searchRef = useRef(null);
+    const searchTimeoutRef = useRef(null);
 
     useEffect(() => {
         const closeSearchOnOutsideClick = (event) => {
@@ -84,9 +86,27 @@ export default function Header({ setMobileOpen }) {
         return () => document.removeEventListener('pointerdown', closeSearchOnOutsideClick);
     }, []);
 
+    useEffect(() => {
+        window.clearTimeout(searchTimeoutRef.current);
+
+        if (!searchQuery.trim()) {
+            setSearchResults([]);
+            setIsSearchPending(false);
+            return undefined;
+        }
+
+        // Aguarda a pausa na digitação antes de procurar conteúdo no portfólio.
+        searchTimeoutRef.current = window.setTimeout(() => {
+            setSearchResults(findPortfolioMatches(searchQuery));
+            setIsSearchPending(false);
+        }, 275);
+
+        return () => window.clearTimeout(searchTimeoutRef.current);
+    }, [searchQuery]);
+
     const updateSearch = (value) => {
         setSearchQuery(value);
-        setSearchResults(findPortfolioMatches(value));
+        setIsSearchPending(Boolean(value.trim()));
         setIsSearchOpen(Boolean(value.trim()));
     };
 
@@ -115,9 +135,11 @@ export default function Header({ setMobileOpen }) {
 
     const handleSearchSubmit = (event) => {
         event.preventDefault();
+        window.clearTimeout(searchTimeoutRef.current);
         const results = findPortfolioMatches(searchQuery);
         setSearchResults(results);
-        setIsSearchOpen(true);
+        setIsSearchPending(false);
+        setIsSearchOpen(Boolean(searchQuery.trim()));
         if (results[0]) selectSearchResult(results[0]);
     };
 
@@ -162,7 +184,9 @@ export default function Header({ setMobileOpen }) {
 
                     {isSearchOpen && (
                         <div className="absolute right-0 mt-2 w-[min(24rem,calc(100vw-2rem))] max-h-80 overflow-y-auto rounded-xl border border-slate-700 bg-slate-950 shadow-2xl shadow-black/40">
-                            {searchResults.length ? (
+                            {isSearchPending ? (
+                                <p className="px-4 py-3 text-sm text-slate-400" role="status">Buscando...</p>
+                            ) : searchResults.length ? (
                                 <ul aria-label="Resultados da busca" className="divide-y divide-slate-800">
                                     {searchResults.map((result, index) => (
                                         <li key={`${result.sectionTitle}-${result.title}-${index}`}>

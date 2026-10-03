@@ -1,6 +1,40 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import githubIcon from '../assets/images/icons/github.png';
+
+// Mantém projetos em destaque visíveis se a API pública do GitHub falhar ou atingir o limite.
+const fallbackRepositories = [
+    {
+        id: 'fallback-alura-racing',
+        name: 'Alura_jogo_corrida',
+        description: 'Jogo de corrida criado com JavaScript.',
+        html_url: 'https://github.com/BielVereda/Alura_jogo_corrida',
+        language: 'JavaScript',
+        stargazers_count: 5,
+        forks_count: 0,
+        fork: false
+    },
+    {
+        id: 'fallback-pokemon-battle',
+        name: 'Pokemon-Battle',
+        description: 'Projeto de batalha Pokémon desenvolvido em TypeScript.',
+        html_url: 'https://github.com/BielVereda/Pokemon-Battle',
+        language: 'TypeScript',
+        stargazers_count: 5,
+        forks_count: 0,
+        fork: false
+    },
+    {
+        id: 'fallback-java-project',
+        name: 'Aulas_LOPAL_Fiamma',
+        description: 'Exercícios e projetos de lógica de programação em Java, desenvolvidos no SENAI.',
+        html_url: 'https://github.com/BielVereda/Aulas_LOPAL_Fiamma',
+        language: 'Java',
+        stargazers_count: 5,
+        forks_count: 0,
+        fork: false
+    }
+];
 
 export default function Projects() {
     const [repositories, setRepositories] = useState([]);
@@ -19,11 +53,14 @@ export default function Projects() {
             })
             .then((repos) => {
                 if (!isActive) return;
+                if (!Array.isArray(repos)) throw new Error('Resposta inválida da API do GitHub');
                 setRepositories(repos);
                 setLoadState('ready');
             })
             .catch(() => {
-                if (isActive) setLoadState('error');
+                if (!isActive) return;
+                setRepositories(fallbackRepositories);
+                setLoadState('fallback');
             });
 
         return () => {
@@ -31,16 +68,23 @@ export default function Projects() {
         };
     }, []);
 
-    const updateCarouselPosition = () => {
+    const updateCarouselPosition = useCallback(() => {
         const carousel = carouselRef.current;
         const firstCard = carousel?.firstElementChild;
         if (!carousel || !firstCard) return;
 
         const gap = Number.parseFloat(window.getComputedStyle(carousel).columnGap) || 0;
         const cardStep = firstCard.getBoundingClientRect().width + gap;
-        setActiveIndex(Math.round(carousel.scrollLeft / cardStep));
+        const lastCardIndex = carousel.children.length - 1;
+        setActiveIndex(Math.min(lastCardIndex, Math.round(carousel.scrollLeft / cardStep)));
         setIsAtEnd(carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 2);
-    };
+    }, []);
+
+    useEffect(() => {
+        updateCarouselPosition();
+        window.addEventListener('resize', updateCarouselPosition);
+        return () => window.removeEventListener('resize', updateCarouselPosition);
+    }, [repositories, updateCarouselPosition]);
 
     const moveCarousel = (direction) => {
         const carousel = carouselRef.current;
@@ -63,9 +107,9 @@ export default function Projects() {
                 </div>
                     <h2 className="text-4xl font-bold text-white">Repositórios GitHub</h2>
                 </div>
-                {loadState === 'ready' && (
+                {(loadState === 'ready' || loadState === 'fallback') && (
                     <div className="flex items-center gap-3 text-sm text-slate-400">
-                        <span aria-live="polite">{activeIndex + 1} / {repositories.length}</span>
+                        <span aria-live="polite">{Math.min(activeIndex + 1, repositories.length)} / {repositories.length}</span>
                         <button
                             type="button"
                             onClick={() => moveCarousel(-1)}
@@ -92,20 +136,17 @@ export default function Projects() {
                 <p className="text-sm text-slate-400" role="status">Carregando repositórios...</p>
             )}
 
-            {loadState === 'error' && (
-                <p className="text-sm text-slate-400" role="alert">
-                    Não foi possível carregar os repositórios. Acesse o{' '}
-                    <a className="text-cyan-400 hover:text-cyan-300" href="https://github.com/BielVereda?tab=repositories" target="_blank" rel="noreferrer">
-                        perfil no GitHub
-                    </a>.
+            {loadState === 'fallback' && (
+                <p className="text-sm text-slate-400" role="status">
+                    Não foi possível atualizar os repositórios agora. Estes são alguns projetos em destaque.
                 </p>
             )}
 
-            {loadState === 'ready' && (
+            {(loadState === 'ready' || loadState === 'fallback') && (
                 <div
                     ref={carouselRef}
                     onScroll={updateCarouselPosition}
-                    className="grid grid-flow-col auto-cols-[100%] sm:auto-cols-[calc((100%_-_1.5rem)/2)] lg:auto-cols-[calc((100%_-_3rem)/3)] gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-3"
+                    className="projects-carousel-scrollbar grid grid-flow-col auto-cols-[100%] sm:auto-cols-[calc((100%_-_1.5rem)/2)] lg:auto-cols-[calc((100%_-_3rem)/3)] gap-6 overflow-x-auto overscroll-x-contain snap-x snap-mandatory scroll-smooth touch-pan-x pb-3"
                     aria-label="Todos os repositórios públicos do GitHub"
                 >
                 {repositories.map((repo) => (

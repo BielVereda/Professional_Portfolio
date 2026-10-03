@@ -15,7 +15,7 @@ export default function Education() {
                     <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-3xl group-hover:bg-cyan-500/10 transition-all duration-300"></div>
                     <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20 group-hover:bg-cyan-500/20 transition-all duration-300">Ensino Superior</span>
                     <h3 className="text-xl font-bold text-white mt-4 group-hover:text-cyan-400 transition-colors duration-300">Bacharelado em Engenharia da Computação</h3>
-                    <p className="text-slate-400 text-sm mt-1 group-hover:text-slate-300 transition-colors duration-300">VUNESP (EAD) | 1º Semestre em andamento (Conclusão: 2031)</p>
+                    <p className="text-slate-400 text-sm mt-1 group-hover:text-slate-300 transition-colors duration-300">UNIVESP (EAD) | 1º Semestre em andamento | Conclusão: 2031</p>
                     <p className="text-slate-400 text-sm mt-3 leading-relaxed group-hover:text-slate-300 transition-colors duration-300">Formação focada em fundamentos de arquitetura de computadores, matemática aplicada, algoritmos e engenharia de software.</p>
                 </div>
 
@@ -23,7 +23,7 @@ export default function Education() {
                     <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-all duration-300"></div>
                     <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20 group-hover:bg-cyan-500/20 transition-all duration-300">Formação Técnica</span>
                     <h3 className="text-xl font-bold text-white mt-4 group-hover:text-cyan-400 transition-colors duration-300">Técnico em Desenvolvimento de Sistemas</h3>
-                    <p className="text-slate-400 text-sm mt-1 group-hover:text-slate-300 transition-colors duration-300">Escola SENAI Suíço-Brasileira | Término: Dez/2026</p>
+                    <p className="text-slate-400 text-sm mt-1 group-hover:text-slate-300 transition-colors duration-300">Escola SENAI Suíço-Brasileira | 4º Semestre em andamento| Conclusão: Dez/2026</p>
                     <p className="text-slate-400 text-sm mt-3 leading-relaxed group-hover:text-slate-300 transition-colors duration-300">Foco prático em desenvolvimento web front-end, lógica de programação, modelagem de banco de dados e testes de software.</p>
                 </div>
             </div>

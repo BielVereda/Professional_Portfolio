@@ -4,6 +4,7 @@ import githubIcon from '../assets/images/icons/github.png';
 import instagramIcon from '../assets/images/icons/instagram.png';
 import whatsappIcon from '../assets/images/icons/whatsapp.png';
 import emailIcon from '../assets/images/icons/email.png';
+import { gmailComposeUrl } from '../data/contactLinks';
 
 export default function Hero() {
     return (
@@ -17,7 +18,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-slate-400 text-lg sm:text-xl max-w-2xl leading-relaxed">
-                Estudante de <strong className="text-slate-200 hover:text-cyan-400 transition-colors duration-300">Engenharia da Computação (VUNESP)</strong> e <strong className="text-slate-200 hover:text-cyan-400 transition-colors duration-300">Técnico em Desenvolvimento de Sistemas (SENAI Suíço-Brasileira)</strong>. Unindo tecnologia de software, energia sustentável e liderança comunitária.
+                Estudante de <strong className="text-slate-200 hover:text-cyan-400 transition-colors duration-300">Engenharia da Computação (UNIVESP)</strong> e <strong className="text-slate-200 hover:text-cyan-400 transition-colors duration-300">Técnico em Desenvolvimento de Sistemas (SENAI Suíço-Brasileira)</strong>. Unindo tecnologia de software, energia sustentável e liderança comunitária.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-6">
@@ -58,7 +59,9 @@ export default function Hero() {
                     WhatsApp
                 </a>
                 <a
-                    href="mailto:gabrielsantosvereda@gmail.com"
+                    href={gmailComposeUrl}
+                    target="_blank"
+                    rel="noreferrer"
                     className="group flex items-center gap-2 bg-slate-900/80 backdrop-blur-sm hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-600 border border-slate-700 hover:border-cyan-500/50 text-slate-200 hover:text-slate-950 font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 text-sm sm:text-base"
                 >
                     <img src={emailIcon} alt="Email" className="w-5 h-5 brightness-0 invert drop-shadow-md group-hover:brightness-0 group-hover:invert-0 transition-all duration-300" />

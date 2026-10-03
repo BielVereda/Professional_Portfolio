@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { certificatesData } from '../data/portfolioData';
 
 export default function Certificates() {
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const visibleCertificates = useMemo(() => {
+        return Array.from({ length: Math.min(2, certificatesData.length) }, (_, offset) => {
+            const certIndex = (activeIndex + offset) % certificatesData.length;
+            return {
+                cert: certificatesData[certIndex],
+                certIndex
+            };
+        });
+    }, [activeIndex]);
+
+    const handlePrevious = () => {
+        setActiveIndex((current) => (current - 1 + certificatesData.length) % certificatesData.length);
+    };
+
+    const handleNext = () => {
+        setActiveIndex((current) => (current + 1) % certificatesData.length);
+    };
+
     return (
         <section id="certificates" className="space-y-8 scroll-mt-28">
             <div className="space-y-2">
@@ -37,37 +58,84 @@ export default function Certificates() {
                 </div>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
-                {certificatesData.map((cert, idx) => (
-                    <div 
-                        key={idx} 
-                        className="group bg-slate-900/60 backdrop-blur-sm border border-slate-800/80 p-4 rounded-xl flex flex-col justify-between gap-3 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300 hover:scale-105"
-                    >
-                        <div className="flex items-start gap-3">
-                            <span className="text-xl text-cyan-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300">✓</span>
-                            <div>
-                                <h4 className="text-xs font-bold text-slate-200 group-hover:text-cyan-400 transition-colors duration-300">{cert.name}</h4>
-                                <p className="text-[11px] text-slate-500 mt-0.5 group-hover:text-slate-400 transition-colors duration-300">{cert.issuer} • <span className="text-cyan-400/80 group-hover:text-cyan-400 transition-colors duration-300">{cert.category}</span></p>
+            <div className="flex items-center justify-end gap-3 text-sm text-slate-400">
+                <span aria-live="polite">{activeIndex + 1} / {certificatesData.length}</span>
+                <button
+                    type="button"
+                    onClick={handlePrevious}
+                    aria-label="Certificado anterior"
+                    className="p-2 rounded-lg border border-slate-700 text-slate-300 transition-colors hover:border-cyan-500/50 hover:text-cyan-400"
+                >
+                    <ChevronLeft size={18} aria-hidden="true" />
+                </button>
+                <button
+                    type="button"
+                    onClick={handleNext}
+                    aria-label="Próximo certificado"
+                    className="p-2 rounded-lg border border-slate-700 text-slate-300 transition-colors hover:border-cyan-500/50 hover:text-cyan-400"
+                >
+                    <ChevronRight size={18} aria-hidden="true" />
+                </button>
+            </div>
+
+            <div
+                key={activeIndex}
+                className="animate-certificate-transition relative mx-auto h-[360px] w-full max-w-[1200px] overflow-hidden"
+            >
+                {visibleCertificates.map(({ cert, certIndex }, index) => {
+                    const isActive = index === 0;
+                    const offset = index * 28;
+                    const scale = 1 - index * 0.02;
+                    const opacity = isActive ? 1 : 0.9;
+
+                    return (
+                        <div
+                            key={`${cert.name}-${certIndex}`}
+                            className="absolute inset-x-0 top-0 mx-auto w-full max-w-[1180px]"
+                            style={{
+                                transform: `translateY(${offset}px) scale(${scale})`,
+                                opacity,
+                                zIndex: 30 - index,
+                                pointerEvents: isActive ? 'auto' : 'none',
+                                filter: isActive ? 'none' : 'blur(0.1px)'
+                            }}
+                        >
+                            <div className="group bg-slate-900/85 backdrop-blur-sm border border-slate-800/80 p-5 rounded-2xl shadow-xl shadow-cyan-500/5 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300">
+                                <div className="flex items-start gap-4">
+                                    <span className="text-3xl text-cyan-400 shrink-0 mt-1">✓</span>
+
+                                    <div className="min-w-0 flex-1">
+                                        <h4 className="text-3xl font-bold text-white leading-snug break-words">
+                                            {cert.name}
+                                        </h4>
+                                        <p className="mt-3 text-lg text-slate-500">
+                                            {cert.issuer} • <span className="text-cyan-400">{cert.category}</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="mt-8">
+                                    {cert.files?.length ? (
+                                        <a
+                                            href={encodeURI(`/certificates/${cert.files[0].path}`)}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-3 text-2xl font-semibold text-cyan-400 hover:text-cyan-300 transition-colors duration-300"
+                                        >
+                                            Visualizar certificado
+                                            <span aria-hidden="true">→</span>
+                                        </a>
+                                    ) : (
+                                        <span className="inline-flex items-center gap-3 text-2xl font-semibold text-cyan-400">
+                                            Visualizar certificado
+                                            <span aria-hidden="true">→</span>
+                                        </span>
+                                    )}
+                                </div>
                             </div>
                         </div>
-                        <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
-                            {cert.files?.length ? cert.files.map((file) => (
-                                <a
-                                    key={file.path}
-                                    href={encodeURI(`/certificates/${file.path}`)}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="group/btn text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors duration-300 flex items-center gap-1"
-                                >
-                                    {file.label ?? 'Visualizar certificado'}
-                                    <span className="group-hover/btn:translate-x-1 transition-transform duration-300">→</span>
-                                </a>
-                            )) : (
-                                <span className="text-xs text-slate-500">Certificado ainda não disponível</span>
-                            )}
-                        </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         </section>
     );

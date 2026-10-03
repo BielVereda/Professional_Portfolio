@@ -39,40 +39,42 @@ export const skillCategories = {
     ]
 };
 
-export const projectsData = [
-    {
-        title: "Portfólio Profissional em React",
-        type: "Projeto Pessoal / SPA",
-        description: "Aplicação Web moderna com React e Tailwind CSS, incluindo navegação estilo pílula flutuante, central de certificados e vitrine de habilidades.",
-        techs: ["React", "Tailwind CSS", "Vite", "JavaScript"],
-        github: "https://github.com/BielVereda/Professional_Portfolio"
-    },
-    {
-        title: "Aplicações e Projetos de Aula (SENAI)",
-        type: "Projeto Acadêmico",
-        description: "Sistemas web e exercícios práticos desenvolvidos durante as aulas do Técnico em Desenvolvimento de Sistemas no SENAI Suíço-Brasileira.",
-        techs: ["HTML/CSS", "JavaScript", "Python", "SQL"],
-        github: "https://github.com/BielVereda"
-    },
-    {
-        title: "Manutenção & Layouts Web Freelance",
-        type: "Experiência Prática / Clientes",
-        description: "Ajustes de layout, usabilidade, responsividade e correção de bugs em páginas institucionais para clientes particulares.",
-        techs: ["HTML5", "CSS3", "JavaScript", "Git"],
-        github: "https://github.com/BielVereda"
-    }
-];
-
 export const certificatesData = [
-    { name: "WorldSkills São Paulo – Modalidade #62 (Energias Renováveis)", issuer: "SENAI SP", category: "Destaque" },
-    { name: "Carreira Profissional de Eletricista Fotovoltaico (FIC)", issuer: "SENAI Suíço-Brasileira", category: "Energias" },
-    { name: "Implantação de Serviços em Nuvem - Microsoft AZ-900", issuer: "SENAI Suíço-Brasileira", category: "Cloud" },
-    { name: "Implantação de Serviços em Nuvem - AWS", issuer: "SENAI Suíço-Brasileira", category: "Cloud" },
-    { name: "Cyber Ops Associate", issuer: "SENAI Suíço-Brasileira", category: "Segurança" },
-    { name: "Programação Oracle - Java Fundamentals", issuer: "SENAI Ary Torres", category: "Linguagens" },
-    { name: "Programação em Python para Data Science", issuer: "SENAI Ary Torres", category: "Linguagens" },
-    { name: "IA - Inteligência Artificial & Palestra IARA Google", issuer: "Capacita+ / SENAI", category: "IA" },
-    { name: "Competência Transversal em Lógica de Programação", issuer: "SENAI São Paulo", category: "Fundamentos" },
-    { name: "Formação HTML5, CSS3 Responsivo & JavaScript", issuer: "Alura", category: "Web" },
-    { name: "Vocações / Mesa de Profissões", issuer: "Porto / Vocação", category: "Soft Skills" }
+    { name: "Implantação de Serviços em Nuvem - Microsoft AZ-900", issuer: "SENAI Suíço-Brasileira", category: "Cloud", files: [{ path: "Certificado Implantação de Serviços em Nuvem - Microsoft AZ-900.png" }] },
+    { name: "Implantação de Serviços em Nuvem - AWS Cloud Practitioner Foundational", issuer: "SENAI Suíço-Brasileira", category: "Cloud", files: [{ path: "Certificado Implantação de Serviços em Nuvem - AWS.png" }] },
+    { name: "Instalador de Sistemas Fotovoltaicos", issuer: "SENAI Suíço-Brasileira", category: "Energias", files: [{ path: "Certificado Implantação de Serviços em Nuvem - AWS (2).png" }] },
+    { name: "Cyber Ops Associate", issuer: "SENAI Suíço-Brasileira", category: "Segurança", files: [{ path: "Certificado Cyber Ops Associate.png" }] },
+    { name: "Programação Oracle - Java Fundamentals", issuer: "SENAI Ary Torres", category: "Linguagens", files: [{ path: "Certificado Programação Oracle - Java Fundamentals.png" }] },
+    { name: "Programação em Python para Data Science", issuer: "SENAI Ary Torres", category: "Linguagens", files: [{ path: "Certificado Programação em Python para Data Science.png" }] },
+    { name: "Capacita+ Google Cloud", issuer: "Capacita+ / Google Cloud", category: "Cloud", files: [{ path: "Certificado Capacita+ Google Cloud.png" }] },
+    { name: "Fluência - Fundamentos da Inteligência Artificial", issuer: "SENAI", category: "Inteligência Artificial", files: [{ path: "Certificado FLUÊNCIA - FUNDAMENTOS DA INTELIGÊNCIA ARTIFICIAL.png" }] },
+    { name: "Ética na Inteligência Artificial", issuer: "SENAI", category: "Inteligência Artificial", files: [{ path: "Certificado Ética na Inteligência Artificial.png" }] },
+    { name: "Competência Transversal em Lógica de Programação", issuer: "SENAI São Paulo", category: "Fundamentos", files: [{ path: "Certificado Competência Transversal Lógica de Programacao.png" }] },
+    { name: "HTML e CSS - Responsividade com Mobile-First", issuer: "SENAI", category: "Web", files: [{ path: "Certificado HTML e CSS - Responsividade com Mobile-First.png" }] },
+    { name: "HTML e CSS - Praticando HTML & CSS", issuer: "SENAI", category: "Web", files: [{ path: "Certificado HTML e CSS_Praticando HTML & CSS.png" }] },
+    { name: "JavaScript para Web - Crie páginas dinâmicas", issuer: "SENAI", category: "Web", files: [{ path: "Certificado JavaScript para Web - Crie páginas dinâmicas.png" }] },
+    { name: "Vocações / Mesa das Profissões", issuer: "Porto / Vocação", category: "Carreira", files: [{ path: "Certificado Mesa das Profissões - Porto.png" }] },
+    { name: "Acelerando a Transição para a Economia Circular", issuer: "SENAI", category: "Economia Circular", files: [{ path: "Certificado ACELERANDO A TRANSIÇÃO PARA A ECONOMIA CIRCULAR.png" }] },
+    { name: "Ciclos de Retorno para Economia Circular", issuer: "SENAI", category: "Economia Circular", files: [{ path: "Certificado CICLOS DE RETORNO PARA ECONOMIA CIRCULAR.png" }] },
+    { name: "Geração de Valor Circular e Modelos de Negócios", issuer: "SENAI", category: "Economia Circular", files: [{ path: "Certificado GERAÇÃO DE VALOR CIRCULAR E MODELOS DE NEGÓCIOS.png" }] },
+    { name: "Cidadania Digital e Uso Consciente da Internet", issuer: "SENAI", category: "Fundamentos digitais", files: [{ path: "Certificado CIDADANIA DIGITAL E USO CONSCIENTE DA INTERNET.png" }] },
+    { name: "Desenho 2D de Personagens para Jogos Digitais", issuer: "SENAI", category: "Design", files: [{ path: "Certificado Desenho 2D de Personagens para Jogos Digitais.png" }] },
+    { name: "Desenvolvendo a Blockchain", issuer: "SENAI", category: "Tecnologia", files: [{ path: "Certificado Desenvolvendo a Blockchain.png" }] },
+    { name: "Design Thinking", issuer: "SENAI", category: "Inovação", files: [{ path: "Certificado DESIGN THINKING.png" }] },
+    { name: "Desvendando a Descarbonização", issuer: "SENAI", category: "Sustentabilidade", files: [{ path: "Certificado DESVENDANDO A DESCARBONIZAÇÃO.png" }] },
+    { name: "Desvendando a Indústria 4.0", issuer: "SENAI", category: "Indústria", files: [{ path: "Certificado DESVENDANDO A INDÚSTRIA 4.0.png" }] },
+    { name: "Desvendando o ESG", issuer: "SENAI", category: "Sustentabilidade", files: [{ path: "Certificado DESVENDANDO O ESG.png" }] },
+    { name: "Empreender SENAI", issuer: "SENAI", category: "Empreendedorismo", files: [{ path: "Certificado EMPREENDER SENAI.png" }] },
+    { name: "Excel Básico", issuer: "SENAI", category: "Produtividade", files: [{ path: "Certificado EXCEL BÁSICO.png" }] },
+    { name: "Fundamentos da Gestão de Projetos Aplicados na Indústria", issuer: "SENAI", category: "Gestão", files: [{ path: "Certificado FUNDAMENTOS DA GESTÃO DE PROJETOS APLICADOS NA INDÚSTRIA.png" }] },
+    { name: "Gestão do Tempo", issuer: "SENAI", category: "Gestão", files: [{ path: "Certificado GESTÃO DO TEMPO.png" }] },
+    { name: "Introdução ao Arduino", issuer: "SENAI", category: "Tecnologia", files: [{ path: "Certificado Introdução ao Arduino.png" }] },
+    { name: "Por Dentro da Segurança Cibernética", issuer: "SENAI", category: "Segurança", files: [{ path: "Certificado POR DENTRO DA SEGURANÇA CIBERNÉTICA.png" }] },
+    { name: "Portal Jovens no Comércio Exterior", issuer: "Vocação / Procomex", category: "Comércio exterior", files: [
+        { path: "Certificado Portal Jovens no Comércio Exterior Página 1.png", label: "Visualizar certificado (página 1)" },
+        { path: "Certificado Portal Jovens no Comércio Exterior Página 2.png", label: "Visualizar certificado (página 2)" }
+    ] },
+    { name: "Programação em Python", issuer: "SENAI", category: "Linguagens", files: [{ path: "Certificado PROGRAMAÇÃO EM PYTHON.png" }] },
+    { name: "Saberes de Mulheres Negras e Periféricas no Fazer Coletivo e Comunitário", issuer: "SENAI", category: "Sociedade", files: [{ path: "Certificado Saberes de mulheres negras e periféricas no fazer coletivo e comunitário.png" }] },
+    { name: "IA - Inteligência Artificial & Palestra IARA Google", issuer: "Capacita+ / SENAI", category: "Inteligência Artificial", files: [{ path: "Certificado Capacita+ Google Cloud.png" }] }
 ]

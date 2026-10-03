@@ -24,6 +24,19 @@ export default function Certificates() {
                 </div>
             </div>
 
+            <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/40 border border-cyan-500/40 p-8 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center gap-6 shadow-xl shadow-cyan-500/10 hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-[1.02]">
+                <div className="p-4 bg-cyan-500/10 text-cyan-400 rounded-2xl border border-cyan-500/30 shrink-0">
+                    <span className="text-2xl font-bold">OLISP</span>
+                </div>
+                <div>
+                    <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest">Reconhecimento</span>
+                    <h3 className="text-2xl font-bold text-white mt-1">3º lugar na OLISP</h3>
+                    <p className="text-slate-300 text-sm mt-2 leading-relaxed">
+                        Competição da SEDUC-SP que incentiva a competência leitora e a interpretação textual.
+                    </p>
+                </div>
+            </div>
+
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
                 {certificatesData.map((cert, idx) => (
                     <div 
@@ -37,10 +50,22 @@ export default function Certificates() {
                                 <p className="text-[11px] text-slate-500 mt-0.5 group-hover:text-slate-400 transition-colors duration-300">{cert.issuer} • <span className="text-cyan-400/80 group-hover:text-cyan-400 transition-colors duration-300">{cert.category}</span></p>
                             </div>
                         </div>
-                        <button className="group/btn mt-2 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors duration-300 flex items-center gap-1">
-                            Ver Certificado
-                            <span className="group-hover/btn:translate-x-1 transition-transform duration-300">→</span>
-                        </button>
+                        <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+                            {cert.files?.length ? cert.files.map((file) => (
+                                <a
+                                    key={file.path}
+                                    href={encodeURI(`/certificates/${file.path}`)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group/btn text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors duration-300 flex items-center gap-1"
+                                >
+                                    {file.label ?? 'Visualizar certificado'}
+                                    <span className="group-hover/btn:translate-x-1 transition-transform duration-300">→</span>
+                                </a>
+                            )) : (
+                                <span className="text-xs text-slate-500">Certificado ainda não disponível</span>
+                            )}
+                        </div>
                     </div>
                 ))}
             </div>

@@ -110,6 +110,21 @@ body {
   }
 }
 
+.animate-certificate-transition {
+  animation: certificate-transition 320ms ease-out;
+}
+
+@keyframes certificate-transition {
+  from {
+    opacity: 0.65;
+    transform: translateY(8px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .animate-fade-in {
   animation: fade-in 0.8s ease-out;
 }
@@ -176,6 +191,12 @@ section {
 section.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-certificate-transition {
+    animation: none;
+  }
 }
 
 /* Smooth scrollbar */
